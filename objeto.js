@@ -5,16 +5,14 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 function main() {
-    let i = 0;
     let listaPessoas = [];
     rl.question("Quantas pessoas deseja cadastrar? ", (pessoas) => {
         pessoas = parseInt(pessoas);
-        cadastrarPessoa(pessoa, listaPessoas, i);
+        cadastrarPessoa();
 });
 };
-function cadastrarPessoa(pessoas, listaPessoas, i) {
-        if (i < pessoas) {
-            console.log(`Pessoa ${i + 1}`);
+function cadastrarPessoa(pessoas, listaPessoas, Pessoa) {
+        for (let i = 0; i < pessoas; i++) {
             rl.question("Escreva seu nome: ", (nome) => {
                 nome = nome.toLowerCase();
                 rl.question("Digite sua idade: ", (idade) => {
@@ -25,20 +23,13 @@ function cadastrarPessoa(pessoas, listaPessoas, i) {
                             peso = parseFloat(peso);
 
                             listaPessoas.push(new Pessoa(nome, idade, altura, peso));
-
-                            cadastrarPessoa(pessoas, listaPessoas, i + 1);
-
+                            return cadastrarPessoa(listaPessoas);
                         });
                     });
                 });
             });
-        } else {
-            console.log("\nLista de pessoas cadastradas:");
-            listaPessoas.forEach(Pessoa => {
-                console.log(Pessoa.boasVindas());
-        });
+        } 
         rl.close();
-    }
 };
 class Pessoa {
     constructor(nome, idade, altura, peso) {
