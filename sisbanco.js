@@ -74,6 +74,21 @@ function buscarCadastro(){
     }
     rl.close();
   });
+  return exibirMenu();
+}
+
+function excluirCadastro(){
+    rl.question("Escreva o seu nome: ", (nome) => {
+        let encontrado = ListaDeCadastros.findIndex(cadastro => cadastro.nome === nome.toLowerCase());
+        if (encontrado !== -1) { // se ele for diferente de -1 ele foi encontrado e excluido
+          ListaDeCadastros.splice(indice, 1);
+          console.log("Cadastro encontrado e deletado");
+        } else {
+          console.log("Cadastro não encontrado.");
+        }
+        rl.close();
+      });
+    return exibirMenu();
 }
 function totalDeCadastros(){ // função pergunta quantas pessoas vão ser cadastradas
     rl.question("Quantas pessoas deseja cadastrar? ", async (resposta) => {
@@ -89,12 +104,12 @@ function totalDeCadastros(){ // função pergunta quantas pessoas vão ser cadas
 };
 function exibirMenu() {
     console.log("Escolha uma opção:");
-    console.log("1 - Cadastrar empresa");
-    console.log("2 - Buscar empresa");
-    console.log("3 - Listar empresas");
-    console.log("4 - Excluir empresa");
-    console.log("5 - Alterar empresa");
-    console.log("6 - Sair");
+    console.log("1 - Cadastrar Pessoa, funciona");
+    console.log("2 - Buscar Pessoa, funciona");
+    console.log("3 - Listar Pessoa, em manutenção");
+    console.log("4 - Excluir Pessoa, funciona");
+    console.log("5 - Alterar Pessoa, em manutenção");
+    console.log("6 - Sair, funciona");
   
     rl.question("Escolha uma opção: ", (opcao) => {
       switch (opcao) {
@@ -105,13 +120,13 @@ function exibirMenu() {
           buscarCadastro();
           break;
         case "3":
-          listarEmpresas();
+          listarCadastro();
           break;
         case "4":
-          excluirEmpresas();
+          excluirCadastro();
           break;
         case "5":
-          alterarEmpresas();
+          alterarCadastro();
           break;
         case "6":
           rl.close(); // Sai do programa
