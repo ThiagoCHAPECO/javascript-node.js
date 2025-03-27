@@ -28,7 +28,7 @@ class Cadastro { // cria a classe com o objeto
   }
 async function realizarcadastro(qtdpessoas){
     ListaDeCadastros = []
-    for(let i = 0; i <= qtdpessoas; i++) {
+    for(let i = 1; i <= qtdpessoas; i++) {
         let nome = await perguntar("Digite seu nome: ");
             
             let idade = await perguntar("Digite sua idade: ");
@@ -60,6 +60,7 @@ async function realizarcadastro(qtdpessoas){
                                 
                                         ListaDeCadastros.push(cadastro);
                                         console.log("Cadastro realizado:", cadastro);
+        return exibirMenu();
                                         
     };
 };
