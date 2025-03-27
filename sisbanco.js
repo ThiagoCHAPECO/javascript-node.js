@@ -60,15 +60,20 @@ async function realizarcadastro(qtdpessoas){
                                 
                                         ListaDeCadastros.push(cadastro);
                                         console.log("Cadastro realizado:", cadastro);
-                                 
+                                        
     };
 };
 function buscarCadastro(){
     rl.question("Escreva o seu nome: ", (nome) => {
-        for(nome in ListaDeCadastros)
-            console.log("Esse foi o cadastro encontrado: " + ListaDeCadastros[nome])
-    });
-};
+    let encontrado = ListaDeCadastros.find(cadastro => cadastro.nome === nome.toLowerCase());
+    if (encontrado) {
+      console.log("Cadastro encontrado:", encontrado);
+    } else {
+      console.log("Cadastro não encontrado.");
+    }
+    rl.close();
+  });
+}
 function totalDeCadastros(){ // função pergunta quantas pessoas vão ser cadastradas
     rl.question("Quantas pessoas deseja cadastrar? ", async (resposta) => {
                 let qtdpessoas = parseInt(resposta);
