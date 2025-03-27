@@ -43,8 +43,6 @@ async function cadastrarPessoa(qtdpessoas) {
                             const pessoa = { nome, idade, altura, peso };
                             listaPessoas.push(pessoa);
                     
-                         
-                           return cadastrarPessoa();
     }
 };
 
