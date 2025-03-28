@@ -98,6 +98,43 @@ function excluirCadastro(){
       });
     return exibirMenu();
 }
+async function alterarCadastro() {
+  rl.question("Escreva o seu nome: ", async (nome) => {
+    let indiceEncontrado = ListaDeCadastros.findIndex(cadastro => cadastro.nome === nome.toLowerCase());
+    if (indiceEncontrado !== -1) {
+      try {
+        let novoNome = await perguntar("Digite seu nome: ");
+        let idade = parseInt(await perguntar("Digite sua idade: "));
+        let telefone = parseInt(await perguntar("Digite seu telefone: "));
+        let email = await perguntar("Digite seu email: ");
+        let rua = await perguntar("Digite sua rua: ");
+        let numero = parseInt(await perguntar("Digite o numero da casa (ou prédio): "));
+        let cidade = await perguntar("Digite sua cidade: ");
+        let estado = await perguntar("Digite seu estado: ");
+
+        ListaDeCadastros[indiceEncontrado] = new Cadastro(
+          novoNome.toLowerCase(),
+          idade,
+          telefone,
+          email.toLowerCase(),
+          rua.toLowerCase(),
+          numero,
+          cidade.toLowerCase(),
+          estado.toLowerCase()
+        );
+
+        console.log("Cadastro alterado com sucesso:", ListaDeCadastros[indiceEncontrado]);
+        exibirMenu();
+      } catch (error) {
+        console.error("Erro ao alterar cadastro:", error);
+        exibirMenu();
+      }
+    } else {
+      console.log("Cadastro não encontrado.");
+      exibirMenu();
+    }
+  });
+}
 function totalDeCadastros(){ // função pergunta quantas pessoas vão ser cadastradas
     rl.question("Quantas pessoas deseja cadastrar? ", async (resposta) => {
                 let qtdpessoas = parseInt(resposta);
@@ -112,12 +149,12 @@ function totalDeCadastros(){ // função pergunta quantas pessoas vão ser cadas
 };
 function exibirMenu() {
     console.log("Escolha uma opção:");
-    console.log("1 - Cadastrar Pessoa, funciona");
-    console.log("2 - Buscar Pessoa, funciona");
-    console.log("3 - Listar Pessoa, funciona");
-    console.log("4 - Excluir Pessoa, funciona");
-    console.log("5 - Alterar Pessoa, em manutenção");
-    console.log("6 - Sair, funciona");
+    console.log("1 - Cadastrar Pessoa");
+    console.log("2 - Buscar Pessoa");
+    console.log("3 - Listar Pessoa");
+    console.log("4 - Excluir Pessoa");
+    console.log("5 - Alterar Pessoa");
+    console.log("6 - Sair");
   
     rl.question("Escolha uma opção: ", (opcao) => {
       switch (opcao) {
