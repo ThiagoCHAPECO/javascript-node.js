@@ -65,8 +65,8 @@ async function realizarcadastro(qtdpessoas){
     };
 };
 function buscarCadastro(){
-    rl.question("Escreva o seu nome: ", (nome) => {
-    let encontrado = ListaDeCadastros.find(cadastro => cadastro.nome === nome.toLowerCase());
+    rl.question("Escreva o seu nome: ", (nome) => { // find vai encontrar o nome no cadastro, se encontrar ele vai exibir
+    let encontrado = ListaDeCadastros.find(cadastro => cadastro.nome === nome.toLowerCase()); 
     if (encontrado) {
       console.log("Cadastro encontrado:", encontrado);
     } else {
@@ -77,8 +77,16 @@ function buscarCadastro(){
   return exibirMenu();
 }
 
+function listarCadastro(){
+    console.log("Lista de cadastros:");
+    ListaDeCadastros.forEach(cadastro => { // foreach vai percorrer a lista toda e vai exibir os cadastros
+      console.log(cadastro);
+    });
+    return exibirMenu();
+}
+
 function excluirCadastro(){
-    rl.question("Escreva o seu nome: ", (nome) => {
+    rl.question("Escreva o seu nome: ", (nome) => { // findIndex vai encontrar o indice do nome no cadastro, se encontrar ele vai excluir
         let encontrado = ListaDeCadastros.findIndex(cadastro => cadastro.nome === nome.toLowerCase());
         if (encontrado !== -1) { // se ele for diferente de -1 ele foi encontrado e excluido
           ListaDeCadastros.splice(indice, 1);
@@ -106,7 +114,7 @@ function exibirMenu() {
     console.log("Escolha uma opção:");
     console.log("1 - Cadastrar Pessoa, funciona");
     console.log("2 - Buscar Pessoa, funciona");
-    console.log("3 - Listar Pessoa, em manutenção");
+    console.log("3 - Listar Pessoa, testando");
     console.log("4 - Excluir Pessoa, funciona");
     console.log("5 - Alterar Pessoa, em manutenção");
     console.log("6 - Sair, funciona");
