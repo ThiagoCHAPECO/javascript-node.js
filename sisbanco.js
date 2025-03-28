@@ -114,7 +114,7 @@ function exibirMenu() {
     console.log("Escolha uma opção:");
     console.log("1 - Cadastrar Pessoa, funciona");
     console.log("2 - Buscar Pessoa, funciona");
-    console.log("3 - Listar Pessoa, testando");
+    console.log("3 - Listar Pessoa, funciona");
     console.log("4 - Excluir Pessoa, funciona");
     console.log("5 - Alterar Pessoa, em manutenção");
     console.log("6 - Sair, funciona");
