@@ -1,4 +1,4 @@
-const clientes = require("./clientes.json");
+const clientes = require("../clientes.json");
 
 function filtrarApartamentoSemComplemento(clientes) {
   return clientes.filter((cliente) => {
